@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>즐거운 하라리에 ai실험</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#FFF6E3;--ink:#111;--card:#fff;--p1:#FFD9E0;--p2:#CFE8FF;--p3:#D9F2C9;--p4:#FFF0A8;--p5:#E6D9FF;--p6:#FFD9B8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a14;--ink:#f5efe0;--card:#2a261d;--p1:#5a2f3a;--p2:#2c4560;--p3:#37502c;--p4:#5c5320;--p5:#46386b;--p6:#5e4228}}
+:root[data-theme="dark"]{--bg:#1d1a14;--ink:#f5efe0;--card:#2a261d;--p1:#5a2f3a;--p2:#2c4560;--p3:#37502c;--p4:#5c5320;--p5:#46386b;--p6:#5e4228}
+*,*::before,*::after{box-sizing:inherit}html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Noto Sans KR",system-ui,sans-serif;overflow-x:hidden}
+.box{border:3px solid var(--ink);border-radius:18px;box-shadow:5px 5px 0 var(--ink);background:var(--card);padding:16px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:3px solid var(--ink);display:flex;gap:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+nav a{color:var(--ink);text-decoration:none;font-weight:800;border:2px solid var(--ink);border-radius:99px;padding:4px 12px;background:var(--card)}
+main{max-width:920px;margin:0 auto;padding:16px 14px 40px}section{margin:44px 0;position:relative}
+.big{font:900 64px/1 Georgia,serif;margin:0 0 4px}h2{margin:0 0 14px;font-size:26px}h1{font:900 clamp(30px,8vw,56px)/1.1 Georgia,"Noto Serif KR",serif;margin:12px 0}
+.badge{display:inline-block;background:var(--ink);color:var(--bg);font-weight:900;padding:2px 12px;border-radius:99px;letter-spacing:2px}
+.btn{font:inherit;font-weight:800;border:3px solid var(--ink);border-radius:14px;background:var(--p4);color:var(--ink);padding:8px 14px;box-shadow:3px 3px 0 var(--ink);cursor:pointer;text-decoration:none;display:inline-block;margin:4px 4px 4px 0}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}.btn.dk{background:var(--ink);color:var(--bg)}
+.tiles{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.tile{width:46px;height:54px;display:grid;place-items:center;border:3px solid var(--ink);border-radius:12px;font:900 26px Georgia;box-shadow:3px 3px 0 var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.star{position:absolute;font-size:28px;right:10px;top:-14px}
+.num a{display:block;text-decoration:none;color:var(--ink);font-weight:800}.num b{font:900 34px Georgia;display:block}
+.c1{background:var(--p1)}.c2{background:var(--p2)}.c3{background:var(--p3)}.c4{background:var(--p4)}.c5{background:var(--p5)}.c6{background:var(--p6)}
+#log{height:380px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:10px;background:var(--bg);border:3px solid var(--ink);border-radius:14px}
+.m{max-width:88%;padding:8px 12px;border:2px solid var(--ink);border-radius:14px;overflow-wrap:anywhere}.m.u{align-self:flex-end;background:var(--p2)}.m.b{align-self:flex-start;background:var(--card)}
+.row{display:flex;gap:8px;margin-top:10px}input[type=text]{flex:1;min-width:0;font:inherit;border:3px solid var(--ink);border-radius:12px;padding:8px 10px;background:var(--card);color:var(--ink)}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;background:var(--card)}.ok{background:var(--p3)!important}.no{background:var(--p1)!important}
+.bar{height:14px;border:2px solid var(--ink);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ink)}
+table{border-collapse:collapse;width:100%}td,th{border:2px solid var(--ink);padding:6px;text-align:left;vertical-align:top}.sc{overflow-x:auto}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.5 ui-monospace,monospace}footer{border-top:3px solid var(--ink);padding:18px 14px;text-align:center;font-weight:700}
+@media(max-width:520px){.big{font-size:48px}.m{max-width:96%}}
+</style></head><body>
+<nav><a href="#top">ISSUE</a><a href="#s1">01 PROMPT</a><a href="#s2">02 TEXT</a><a href="#s3">03 CHAT</a><a href="#s4">04 VOCAB</a><a href="#s5">05 ABOUT</a></nav>
+<main id="top">
+<header class="box c4" style="position:relative"><span class="star">✦ ★</span><span class="badge">ISSUE</span>
+<h1>즐거운 하라리에 ai실험</h1><p><b>문법 만드는 방법</b> · Yuval Noah Harari, “The Power of Shared Fictions”</p>
+<a class="btn dk" href="#s3">복습 챗봇 가기 →</a><a class="btn" href="#s4">어휘 퀴즈 가기 →</a>
+<div class="tiles"><span class="tile c1">P</span><span class="tile c2">R</span><span class="tile c3">O</span><span class="tile c5">M</span><span class="tile c6">P</span><span class="tile c4">T</span></div></header>
+<div class="grid num" style="margin-top:22px">
+<div class="box c1"><a href="#s1"><b>01</b>PROMPT</a></div><div class="box c2"><a href="#s2"><b>02</b>TEXT</a></div><div class="box c3"><a href="#s3"><b>03</b>CHAT</a></div><div class="box c5"><a href="#s4"><b>04</b>VOCAB</a></div><div class="box c6"><a href="#s5"><b>05</b>ABOUT</a></div></div>
+
+<section id="s1"><div class="big">01</div><h2>PROMPT ✦ 여섯 요소가 정하는 것</h2><div class="grid">
+<div class="box c1"><b>P · Persona</b><br>수업을 돕는 웹 개발자·교육 설계자. 자료에 없는 말은 지어내지 않는다.</div>
+<div class="box c2"><b>R · Request</b><br>한 장짜리 매거진형 웹앱. 01–05 섹션, 챗봇, 어휘 퀴즈.</div>
+<div class="box c3"><b>O · Object</b><br>「고급영문독해」 수강생. 답을 대신 써 주지 않고 근거 찾기를 돕는다.</div>
+<div class="box c5"><b>M · Material</b><br>워크북 1개만 근거. 지문 전문은 싣지 않는다.</div>
+<div class="box c6"><b>P · Parameters</b><br>한국어+영어, 화난 선생님 말투, [Harari ¶3] 근거 표시, 10문장 이내.</div>
+<div class="box c4"><b>T · Test</b><br>근거 표시·모르는 건 모른다고 답하기·퀴즈 흐름·어휘 20개·모바일을 점검.</div></div>
+<div class="box" style="margin-top:14px;text-align:center"><small>오늘의 기억 문장</small><div style="font:900 28px Georgia">“워크북 첨부”</div></div></section>
+
+<section id="s2"><div class="big">02</div><h2>TEXT ✦ 이 글은?</h2><div class="box c2">
+<p><b>글쓴이</b> Yuval Noah Harari (『사피엔스』 · TED 2015 기반)<br><b>제목</b> Why Humans Rule the World: The Power of Shared Fictions<br><b>글의 유형</b> TOEIC Part 7식 기사형 설명문 (5문단)</p>
+<p><b>한 줄 요약</b> 인간이 지구를 지배하는 이유는 ‘공유된 허구’를 믿고 낯선 사람과도 유연하게 대규모로 협력하기 때문이다.<br><i>Humans rule because shared fictions let strangers cooperate flexibly in huge numbers.</i></p>
+<b>문단 흐름</b><ol style="margin:6px 0 0;padding-left:20px"><li><b>¶1</b> 인간은 왜 지배하는가? 유연하고 대규모인 협력.</li><li><b>¶2</b> 개미·벌은 경직, 침팬지·늑대는 소규모. 인간만 둘 다.</li><li><b>¶3</b> 상상 속 실재(돈·국가·법) = shared fictions. “fiction”은 모욕이 아님.</li><li><b>¶4</b> 인지혁명(약 7만 년 전). 뒷담화는 집단 추적, 신화는 낯선 이들의 결속.</li><li><b>¶5</b> 제도는 이야기라서 다시 쓸 수 있다. 이해가 개선의 첫걸음.</li></ol></div></section>
+
+<section id="s3"><div class="big">03</div><h2>CHAT ✦ 복습 챗봇</h2><div class="box c3">
+<div id="log" aria-live="polite"></div>
+<div class="row"><input type="text" id="q" placeholder="질문을 입력하세요 / Ask here" enterkeyhint="send"><button class="btn dk" id="go">보내기</button></div>
+<div style="margin-top:6px"><button class="btn" id="nw">새 대화</button><button class="btn" data-q="quiz">요약 점검</button><button class="btn" data-q="gram">문법 해석</button><button class="btn" data-q="game">단어 게임</button></div></div></section>
+
+<section id="s4"><div class="big">04</div><h2>VOCAB ✦ 어휘 퀴즈 (20)</h2><div class="box c5"><div id="vq"></div></div>
+<details class="box" style="margin-top:14px"><summary><b>단어 목록 전체 보기</b></summary><div class="sc"><table id="vt"></table></div></details></section>
+
+<section id="s5"><div class="big">05</div><h2>ABOUT</h2><div class="box c6"><p><b>만든 사람</b> 카이도우 · 「고급영문독해」</p>
+<details><summary><b>P.R.O.M.P.T. 지시문 보기</b></summary><pre>[P] 영어 독해 수업을 돕는 웹 개발자·교육 설계자. 수업 자료에 없는 내용을 지어내지 않게 설계.
+[R] Harari “The Power of Shared Fictions” 복습 웹앱. 한 장짜리 매거진형. 고정 메뉴, 표지, 01 PROMPT / 02 TEXT / 03 CHAT / 04 VOCAB / 05 ABOUT.
+[O] 「고급영문독해」 수강생(TOEIC 600–700 → 990). 답을 대신 쓰지 않고 스스로 근거를 찾게 돕는다.
+[M] 워크북 1개만 근거. 지문 전문은 싣지 않음. 자료에 없으면 “수업 자료에는 없는 내용이에요”, 다른 글이면 “이 앱은 Yuval Noah Harari의 글만 다뤄요”.
+[P] 한국어+영어 / 화난 선생님 / 모든 답에 [Harari ¶3] / 퀴즈는 한 번에 한 문제, 힌트 먼저 / 10문장 이내 / 과제 대필 금지 / 크림색·먹선·딱딱한 그림자.
+[T] 8가지 점검: 근거 표시, 자료 밖 질문, 다른 글, 독해 퀴즈 흐름, 오답 힌트, 어휘 20개, 모바일.</pre></details>
+<p><b>책임 문구</b> AI의 답은 틀릴 수 있습니다. 워크북에서 확인하세요. 어휘 채점은 AI가 아니라 앱의 코드가 합니다.</p></div></section>
+</main>
+<footer><div>AI의 답은 틀릴 수 있습니다. 워크북에서 확인하세요.</div><div>Made by 카이도우 · 고급영문독해 · Built with Claude &amp; P.R.O.M.P.T.</div></footer>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const V=[["rule","v.","to govern or control","why do humans rule the planet?",1],["impressive","adj.","causing admiration","not especially impressive",1],["cooperate","v.","to work together toward a goal","cooperate flexibly in very large numbers",1],["flexibly","adv.","in a way that can change easily","cooperate flexibly",1],["rigid","adj.","fixed; unable to change","their cooperation is rigid",2],["colony","n.","a large group of insects living together","enormous colonies",2],["hive","n.","a structure where bees live","change the rules of their hive",2],["stranger","n.","a person one does not know","Millions of strangers who have never met",2],["common goal","n.","an aim shared by a group","work toward a common goal",2],["cathedral","n.","a large, important church","building a cathedral",2],["corporation","n.","a large company","running a corporation",2],["imagination","n.","the ability to form ideas not present to the senses","exist only in their imagination",3],["physical","adj.","relating to things that can be touched","not physical objects",3],["worthless","adj.","having no value","the paper would be worthless",3],["collective","adj.","shared by all members of a group","these collective beliefs",3],["fiction","n.","something invented; not fact","“shared fictions”",3],["insult","n.","a rude remark","the word “fiction” is not an insult",3],["gossip","n.","talk about other people’s private lives","Gossip allowed them to keep track of larger groups",4],["myth","n.","a traditional story that explains beliefs","myths allowed them to unite groups",4],["eternal","adj.","lasting forever","empires that seemed eternal",5]];
+const RQ=[["What is the main purpose of the passage?",["To describe the behavior of chimpanzees and ants","To explain Harari’s theory of why humans dominate the planet","To argue that money should be abolished","To summarize the history of the Roman Empire"],1,1,"글 전체가 무엇을 ‘설명’하는지 봐. 첫 문단의 질문이 힌트야. / What question does ¶1 open with?","글 전체를 대표하는 보기를 골라. 한 문단의 소재만 다루는 보기는 아니야."],
+["According to paragraph 1, what would happen if one human and one chimpanzee were left alone on an island?",["The human would build a shelter first.","They would cooperate to find food.","The chimpanzee would probably survive longer.","Neither would survive."],2,1,"¶1의 island 문장을 찾아. probably 뒤를 봐. / Find the island sentence.","한 명 대 한 마리일 때 누가 유리하다고 했지?"],
+["What is the limitation of cooperation among chimpanzees and wolves?",["It is rigid and cannot change.","It works only in small groups of familiar individuals.","It depends on written rules.","It requires a shared language."],1,2,"¶2에서 chimpanzees and wolves가 나오는 문장. rigid는 누구 얘기였지? / Who is “rigid”?","only in small groups … know one another 부분을 봐."],
+["The word “rigid” in paragraph 2 is closest in meaning to",["flexible","inflexible","enormous","sudden"],1,2,"rigid 바로 뒤 문장이 의미를 풀어 줘. / The next clause explains it.","어휘 목록의 rigid 뜻(fixed; unable to change)과 비교해 봐."],
+["According to paragraph 3, why does a dollar bill have value?",["Because it is made of special paper","Because the government declares it valuable","Because people trust that others will accept it","Because it is backed by gold"],2,3,"¶3 dollar bill 문장. 종이 자체의 가치는 있다고 했나? / Does it have value in itself?","everyone trusts … 구조에 주목해."],
+["Why does Harari say the word “fiction” is not an insult?",["Because fictions are harmless entertainment","Because shared fictions are powerful inventions that enable cooperation","Because all stories are eventually proven true","Because fiction is more popular than non-fiction"],1,3,"¶3 마지막 두 문장을 읽어. / Read the last two sentences of ¶3.","그 이야기들을 어떤 ‘발명’이라고 불렀지?"],
+["What is mentioned as a function of gossip after the Cognitive Revolution?",["It helped humans hunt larger animals.","It allowed humans to keep track of larger groups.","It replaced the need for myths.","It warned humans about predators."],1,4,"¶4에서 Gossip으로 시작하는 문장. / Find the sentence starting with “Gossip”.","gossip은 집단의 ‘크기’와 관련 있어. myth와 헷갈리지 마."],
+["What can be inferred about Harari’s attitude toward shared fictions?",["They should be abandoned as soon as possible.","They are permanent and cannot be changed.","They can be improved once we understand how they work.","They are useful only for economists."],2,5,"¶5 끝부분: abandon 하자는 결론이었나? / Does he say abandon them?","understanding … first step 이 무엇으로 이어지는지 봐."]];
+const G=[["Present perfect passive","has/have been + p.p. · 과거부터 현재까지 이어진 수동. since와 자주 결합.","a lecture that has since been viewed millions of times",1],["Participle clause (수동 분사구문)","(Being) compared with ~ · Being 생략. 주절의 주어가 비교 대상.","Compared with a chimpanzee, a single human being is not impressive.",1],["Second conditional","If + 과거, 주어 + would + 동사원형 · 현재 사실과 반대이거나 가상의 상황.","If that shared trust disappeared tomorrow, the paper would be worthless.",3],["the only + 명사 + that","the only/first/very/all 앞의 선행사엔 관계대명사 that.","humans are the only animals that can cooperate flexibly",1],["whose","groups’ members → groups whose members. 사람·사물 모두 가능.","small groups whose members know one another",2],["whether A, B, or C","~이든 ~이든. 병렬 항목은 같은 형태(동명사구)로.","whether it is building a cathedral, running a corporation, or electing a government",2],["insist that + 직설법 vs 가정법 현재","사실 주장이면 직설법(is), 요구면 (should)+동사원형.","he insists that the word “fiction” is not an insult",3],["rather than","B가 아니라 A. 삽입구면 쉼표로 분리, 주어의 수는 A에 맞춤.","the ability to tell stories, rather than any physical advantage, is what let Homo sapiens spread",4]];
+const NOT="수업 자료에는 없는 내용이에요.",OTHER="이 앱은 Yuval Noah Harari의 글만 다뤄요.";
+const T="너는 ‘화난 선생님’ 말투(화내되 학생을 존중, 욕설 금지)로 한국어+영어로 답하는 복습 도우미다. 아래 NOTES만 근거로 삼는다. 규칙: 모든 답에 근거 문단을 [Harari ¶3]처럼 표시. 10문장 이내. 과제·영작을 대신 써 주지 않고 힌트와 근거 위치를 알려 준다. NOTES에 없는 질문(예: 저자의 사생활·생일)은 정확히 “"+NOT+"”라고만 답한다. Harari 글이 아닌 다른 글·책 질문은 정확히 “"+OTHER+"”라고 답한다. 추측 금지.\nNOTES:\n¶1 Why do humans rule? One human vs chimp alone: chimp probably survives longer; 1000 vs 1000 humans win. Humans are the only animals that cooperate flexibly in very large numbers.\n¶2 Bees/ants: huge colonies but rigid, cannot change hive rules. Chimps/wolves: flexible but only small groups of people who know each other. Humans combine both; strangers work toward common goals (cathedral, corporation, government).\n¶3 Humans believe in things that exist only in imagination: nations, money, laws, corporations. A dollar bill has value only because everyone trusts others will accept it; without trust it is worthless. Harari calls these collective beliefs “shared fictions”; “fiction” is not an insult; they are the most powerful inventions in human history.\n¶4 Cognitive Revolution ~70,000 years ago: before, humans communicated like animals (predators, food). After: could talk about things that do not exist. Gossip let them keep track of larger groups; myths let them unite groups with no personal connection. Stories, not physical advantage, let Homo sapiens spread.\n¶5 If institutions are stories, they can be rewritten; empires collapsed in a decade, trusted currencies became worthless overnight. He does not say abandon them; understanding how they work is the first step toward improving them.";
+const KB=[[/shared fiction|허구|fiction/i,3,"shared fictions = 수많은 사람이 함께 믿는 상상 속 실재(돈·국가·법·회사)야. 거짓말이 아니고, ‘fiction’은 모욕이 아니라고 했어. 제대로 읽었어?\nCollective beliefs that exist only in imagination yet are powerful."],[/gossip|myth|뒷담|신화/i,4,"gossip은 더 큰 집단을 파악하게 해 주고, myth는 서로 모르는 사람들까지 묶어 줬어. 역할이 다르잖아!\nGossip tracks larger groups; myths unite strangers."],[/money|dollar|돈|지폐/i,3,"지폐는 그 자체로 가치가 없어. 모두가 서로 받아 줄 거라 믿기 때문에 가치가 생겨.\nValue comes from shared trust."],[/cooperat|협력|bee|ant|chimp|wolf|벌|개미|침팬/i,2,"개미·벌은 대규모지만 경직, 침팬지·늑대는 유연하지만 소규모. 인간만 둘 다 해.\nOnly humans are flexible AND large-scale."],[/cognitive|인지|혁명/i,4,"약 7만 년 전, 존재하지 않는 것을 말할 수 있게 된 변화야.\nRoughly 70,000 years ago, language about non-existent things."],[/rewrite|institution|결론|eternal|제도/i,5,"제도도 이야기라서 다시 쓸 수 있어. 버리자는 게 아니라 이해가 개선의 첫걸음이야.\nUnderstanding is the first step."]];
+const log=$("#log");let mode=null,cur=null,tries=0,qi=0,hist=[];
+function say(r,t){const d=document.createElement("div");d.className="m "+(r=="u"?"u":"b");d.innerHTML=esc(t).replace(/\n/g,"<br>");log.appendChild(d);log.scrollTop=log.scrollHeight}
+function reset(){log.innerHTML="";mode=cur=null;hist=[];say("b","또 왔어? 앉아. 워크북에 있는 것만 묻는다. 모든 답엔 근거 문단이 붙어.\nSit down. I only answer from the workbook. Try: “shared fictions가 뭐야?”")}
+const norm=s=>s.toLowerCase().replace(/[^a-z가-힣 ]/g,"").trim();
+function quiz(){const q=RQ[qi%8];cur={t:"q",q,n:qi%8};tries=0;mode="quiz";say("b","독해 문제 "+(cur.n+1)+"/8 (한 번에 한 문제!)\n"+q[0]+"\n"+q[1].map((o,i)=>"("+"ABCD"[i]+") "+o).join("\n")+"\n\n💡 힌트 먼저: "+q[4]+"\n A–D로 답해. 포기하려면 ‘포기’.")}
+function game(){const w=V[Math.random()*20|0];cur={t:"g",w};tries=0;mode="game";say("b","단어 게임! 뜻을 보고 영어 단어를 써.\n“"+w[2]+"”\n💡 힌트: "+w[0][0]+"로 시작, "+w[0].replace(/ /g,"").length+"글자. [Harari ¶"+w[4]+"]\n그만하려면 ‘그만’.")}
+function gram(){mode="gram";say("b","문법 번호(1–8)를 입력해. 직접 해석해 보고 확인해!\n"+G.map((g,i)=>(i+1)+". "+g[0]).join("\n"))}
+function handle(t){
+ if(/^(그만|stop|exit)$/i.test(t)){mode=cur=null;say("b","좋아, 여기까지. 복습은 매일 해!");return true}
+ if(mode=="quiz"&&cur){const q=cur.q,m=t.match(/^\(?([a-d])\)?\b/i);
+  if(/포기|모르겠|give up/i.test(t)){say("b","포기가 빠르군. 정답은 ("+"ABCD"[q[2]]+") "+q[1][q[2]]+" [Harari ¶"+q[3]+"]. 이 문단을 다시 읽어!\nAnswer: ("+"ABCD"[q[2]]+") ");qi++;mode=cur=null;return true}
+  if(!m)return false;
+  if(m[1].toUpperCase()=="ABCD"[q[2]]){say("b","이제야 맞혔네. 정답 ("+"ABCD"[q[2]]+") [Harari ¶"+q[3]+"]. 근거 문장을 소리 내 읽어 봐.\nCorrect. 다음 문제는 ‘요약 점검’ 버튼!");qi++;mode=cur=null}
+  else{tries++;say("b","틀렸어! 정답은 안 알려 줘.\n💡 힌트 "+(tries+1)+": "+(tries==1?q[5]:"해당 문단의 첫 문장부터 다시 읽어. [Harari ¶"+q[3]+"] 정말 모르겠으면 ‘포기’.")+(tries==1?" [Harari ¶"+q[3]+"]":""))}
+  return true}
+ if(mode=="game"&&cur){const w=cur.w;
+  if(norm(t)==w[0]){say("b","맞았어! "+w[0]+" = "+w[2]+" [Harari ¶"+w[4]+"]\n문맥: "+w[3]+"\n한 번 더? ‘단어 게임’ 버튼!");mode=cur=null}
+  else{tries++;say("b","땡! 정답은 안 알려 준다.\n💡 문맥 힌트: "+w[3].replace(new RegExp(w[0].slice(0,4),"i"),"____")+" [Harari ¶"+w[4]+"]\n다시 써 봐. 그만하려면 ‘그만’.")}
+  return true}
+ if(mode=="gram"&&/^[1-8]$/.test(t)){const g=G[t-1];say("b",g[0]+"\n"+g[1]+"\n예: "+g[2]+" [Harari ¶"+g[3]+"]\n다른 번호도 골라 봐!");return true}
+ return false}
+async function ask(t){
+ if(/생일|태어|출생|몇\s*살|나이|결혼|가족|아내|남편|연봉|born|birthday|how old|married/i.test(t)){say("b",NOT+" 워크북에 없는 건 안 지어내!\nNot in the workbook.");return}
+ if(/다른\s*(글|책|작품|지문|저자|작가)|호모\s*데우스|homo deus|21\s*lessons|오웰|1984|동물농장|셰익스피어|해리\s*포터|other (essay|book|text|article)/i.test(t)){say("b",OTHER+" 다른 글은 다른 수업에서 물어봐!\nThis app covers only Harari’s text.");return}
+ const th=document.createElement("div");th.className="m b";th.textContent="생각 중… (선생님 화나는 중)";log.appendChild(th);
+ try{const s=await claude.use("sample");if(!s)throw 0;
+  const r=await s([...hist.slice(-6),{role:"user",content:T+"\n\nQUESTION: "+t}],{cache:false,modelTier:"quick"});
+  th.remove();say("b",r.text);hist.push({role:"user",content:t},{role:"assistant",content:r.text})}
+ catch(e){th.remove();const k=KB.find(x=>x[0].test(t));
+  say("b",k?k[2]+" [Harari ¶"+k[1]+"]\n(AI 연결 없이 워크북 노트로 답했어.)":NOT+"\n(AI 연결이 없어 노트에 있는 키워드만 찾을 수 있어요.)")}}
+async function send(t){t=(t||$("#q").value).trim();if(!t)return;$("#q").value="";say("u",t);if(!handle(t))await ask(t)}
+$("#go").onclick=()=>send();$("#q").onkeydown=e=>{if(e.key=="Enter"&&!e.isComposing)send()};$("#nw").onclick=reset;
+document.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{const k=b.dataset.q;say("u",b.textContent);k=="quiz"?quiz():k=="gram"?gram():game()});
+reset();
+/* VOCAB */
+$("#vt").innerHTML="<tr><th>Word</th><th>POS</th><th>Meaning (EN)</th><th>Example</th></tr>"+V.map(v=>"<tr><td><b>"+v[0]+"</b></td><td>"+v[1]+"</td><td>"+v[2]+"</td><td>"+esc(v[3])+" <small>¶"+v[4]+"</small></td></tr>").join("");
+let S;const vq=$("#vq");
+function start(list,rd){S={list:shuf(list),i:0,score:0,wrong:[],rd:rd||0};show()}
+function show(){if(S.i>=S.list.length)return done();const w=S.list[S.i],ty=(V.indexOf(w)+S.rd)%3,pct=S.i/S.list.length*100;
+ let h='<div class="bar"><i style="width:'+pct+'%"></i></div><p><b>'+(S.i+1)+' / '+S.list.length+'</b> · 점수 '+S.score+'</p>';
+ const opts=k=>shuf([w,...shuf(V.filter(x=>x!=w)).slice(0,3)]);
+ if(ty==0){h+='<p>뜻 고르기: <b style="font-size:22px">'+w[0]+' ('+w[1]+')</b></p>'+opts().map(o=>'<button class="btn opt" data-a="'+(o==w?1:0)+'">'+esc(o[2])+'</button>').join("")}
+ else if(ty==1){h+='<p>단어 고르기: “'+esc(w[2])+'”</p>'+opts().map(o=>'<button class="btn opt" data-a="'+(o==w?1:0)+'">'+o[0]+'</button>').join("")}
+ else h+='<p>직접 쓰기: “'+esc(w[2])+'” <small>('+w[1]+', '+w[0].replace(/ /g,"").length+'글자)</small></p><div class="row"><input type="text" id="vi" autocapitalize="none" autocomplete="off"><button class="btn dk" id="vc">확인</button></div>';
+ h+='<div id="vf"></div>';vq.innerHTML=h;
+ const fin=ok=>{if(ok)S.score++;else S.wrong.push(w);$("#vf").innerHTML='<p><b>'+(ok?"✓ 정답":"✗ 오답 — 정답: "+w[0])+'</b> · '+esc(w[3])+' <small>[Harari ¶'+w[4]+']</small></p><button class="btn dk" id="nx">'+(S.i+1>=S.list.length?"결과 보기":"다음")+'</button>';$("#nx").onclick=()=>{S.i++;show()};vq.querySelectorAll(".opt,#vc,#vi").forEach(e=>e.disabled=true)};
+ vq.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{const ok=b.dataset.a=="1";b.classList.add(ok?"ok":"no");fin(ok)});
+ if(ty==2){const go=()=>fin(norm($("#vi").value)==w[0]);$("#vc").onclick=go;$("#vi").onkeydown=e=>{if(e.key=="Enter"&&!e.isComposing)go()}}}
+function done(){vq.innerHTML='<div class="bar"><i style="width:100%"></i></div><h3>결과: '+S.score+' / '+S.list.length+'</h3>'+(S.wrong.length?'<p>틀린 단어: <b>'+S.wrong.map(w=>w[0]).join(", ")+'</b></p><button class="btn dk" id="rt">틀린 단어만 다시</button>':'<p>전부 맞았어! 🎉</p>')+'<button class="btn" id="ra">처음부터 (20개)</button>';
+ if(S.wrong.length)$("#rt").onclick=()=>start(S.wrong,S.rd+1);$("#ra").onclick=()=>start(V)}
+vq.innerHTML='<p>워크북 어휘 20개를 한 번씩 풉니다. 뜻 고르기 · 단어 고르기 · 직접 쓰기. 채점은 앱의 코드가 합니다.</p><button class="btn dk" id="vs">시작하기</button>';$("#vs").onclick=()=>start(V);
+</script></body></html>
